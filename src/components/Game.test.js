@@ -122,4 +122,22 @@ describe('Game component', () => {
     )
     expect(winner).toEqual(constants.PLAYER_O)
   })
+
+  it('should display winner if player able to draw 3 "X" diagonally from top-right to bottom-left', () => {
+    const winner = calculateWinner(
+      Array(9).fill(constants.PLAYER_X, 2, 3)
+              .fill(constants.PLAYER_X, 4, 5)
+              .fill(constants.PLAYER_X, 6, 7)
+    )
+    expect(winner).toEqual(constants.PLAYER_X)
+  })
+
+  it('should display winner if player able to draw 3 "O" diagonally from top-right to bottom-left', () => {
+    const winner = calculateWinner(
+      Array(9).fill(constants.PLAYER_O, 2, 3)
+              .fill(constants.PLAYER_O, 4, 5)
+              .fill(constants.PLAYER_O, 6, 7)
+    )
+    expect(winner).toEqual(constants.PLAYER_O)
+  })
 })

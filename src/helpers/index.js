@@ -20,4 +20,7 @@ export const calculateWinner = board => {
   if (board[0] && board[0] === board[4] && board[0] === board[8]) {
     return board[0]
   }
+  if (board[2] && board[2] === board[4] && board[2] === board[6]) {
+    return board[2]
+  }
 }
