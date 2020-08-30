@@ -12,6 +12,7 @@ const Game = () => {
 
   const handleClick = i => {
     const boardCopy = [...board]
+    if (boardCopy[i]) return;
     boardCopy[i] = constants.PLAYER_X
     setBoard(boardCopy)
   }
