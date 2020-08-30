@@ -8,4 +8,7 @@ export const calculateWinner = board => {
   if (board[6] && board[6] === board[7] && board[6] === board[8]) {
     return board[6]
   }
+  if (board[0] && board[0] === board[3] && board[0] === board[6]) {
+    return board[0]
+  }
 }

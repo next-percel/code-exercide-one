@@ -31,23 +31,41 @@ describe('Game component', () => {
     expect(winner).toEqual(constants.PLAYER_O)
   })
 
-  it('should display winner if player able to draw 3 "X" in a first row', () => {
+  it('should display winner if player able to draw 3 "X" in a second row', () => {
     const winner = calculateWinner(Array(9).fill(constants.PLAYER_X, 3, 6))
     expect(winner).toEqual(constants.PLAYER_X)
   })
 
-  it('should display winner if player able to draw 3 "O" in a first row', () => {
+  it('should display winner if player able to draw 3 "O" in a second row', () => {
     const winner = calculateWinner(Array(9).fill(constants.PLAYER_O, 3, 6))
     expect(winner).toEqual(constants.PLAYER_O)
   })
 
-  it('should display winner if player able to draw 3 "X" in a first row', () => {
+  it('should display winner if player able to draw 3 "X" in a third row', () => {
     const winner = calculateWinner(Array(9).fill(constants.PLAYER_X, 6, 9))
     expect(winner).toEqual(constants.PLAYER_X)
   })
 
-  it('should display winner if player able to draw 3 "O" in a first row', () => {
+  it('should display winner if player able to draw 3 "O" in a third row', () => {
     const winner = calculateWinner(Array(9).fill(constants.PLAYER_O, 6, 9))
+    expect(winner).toEqual(constants.PLAYER_O)
+  })
+
+  it('should display winner if player able to draw 3 "X" in a first column', () => {
+    const winner = calculateWinner(
+      Array(9).fill(constants.PLAYER_X, 0, 1)
+              .fill(constants.PLAYER_X, 3, 4)
+              .fill(constants.PLAYER_X, 6, 7)
+    )
+    expect(winner).toEqual(constants.PLAYER_X)
+  })
+
+  it('should display winner if player able to draw 3 "O" in a first column', () => {
+    const winner = calculateWinner(
+      Array(9).fill(constants.PLAYER_O, 0, 1)
+              .fill(constants.PLAYER_O, 3, 4)
+              .fill(constants.PLAYER_O, 6, 7)
+    )
     expect(winner).toEqual(constants.PLAYER_O)
   })
 })
