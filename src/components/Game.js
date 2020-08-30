@@ -9,17 +9,19 @@ const style = {
 
 const Game = () => {
   const [board, setBoard] = useState(Array(9).fill(null))
+  const [nextMove, setNextMove] = useState(true)
 
   const handleClick = i => {
     const boardCopy = [...board]
     if (boardCopy[i]) return;
-    boardCopy[i] = constants.PLAYER_X
+    boardCopy[i] = nextMove ? constants.PLAYER_X : constants.PLAYER_O
     setBoard(boardCopy)
+    setNextMove(!nextMove)
   }
 
   return (
     <>
-      <div style={style}>{`${constants.PLAYER_NEXT} : ${constants.PLAYER_X}`}</div>
+      <div style={style}>{constants.PLAYER_NEXT + ' : ' + (nextMove ? constants.PLAYER_X : constants.PLAYER_O) }</div>
       <Board squares={board} onClick={handleClick} />
     </>
   )
