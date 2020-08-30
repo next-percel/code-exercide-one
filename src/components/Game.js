@@ -4,12 +4,15 @@ import constants from '../constants'
 import { calculateWinner, calculateDraw } from '../helpers'
 
 const style = {
+  fontSize:'20px',
+  fontWeight: '800',
   width: '200px',
   margin: '20px auto'
 }
 
 const Game = () => {
-  const [board, setBoard] = useState(Array(9).fill(null))
+  const initialState = Array(9).fill(null)
+  const [board, setBoard] = useState(initialState)
   const [nextMove, setNextMove] = useState(true)
   const winner = calculateWinner(board)
 
@@ -32,10 +35,18 @@ const Game = () => {
     status = constants.PLAYER_NEXT + ' : ' + (nextMove ? constants.PLAYER_X : constants.PLAYER_O)
   }
 
+  const resetHandler = () => {
+    setBoard(initialState)
+    setNextMove(true)
+  }
+
   return (
     <>
       <div style={style}>{status}</div>
       <Board squares={board} onClick={handleClick} />
+      <div style={style}>
+        <button style={style} onClick={resetHandler}>{constants.PLAY_AGAIN}</button>
+      </div>
     </>
   )
 }

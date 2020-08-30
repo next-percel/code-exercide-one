@@ -12,9 +12,9 @@ describe('Game component', () => {
     expect(wrapper.find('Fragment').length).toEqual(1)
   })
 
-  it('Should have 1 div in the Game', () => {
-    expect(wrapper.find('div').length).toEqual(1)
-    expect(wrapper.find('div').text()).toEqual(`${constants.PLAYER_NEXT} : ${constants.PLAYER_X}`)
+  it('Should have 2 div in the Game', () => {
+    expect(wrapper.find('div').length).toEqual(2)
+    expect(wrapper.find('div').at(0).text()).toEqual(`${constants.PLAYER_NEXT} : ${constants.PLAYER_X}`)
   })
 
   it('Should have 1 Board in the Game', () => {
@@ -149,5 +149,11 @@ describe('Game component', () => {
   it('should not display game as draw otherwise', () => {
     const gameDraw = calculateDraw([])
     expect(gameDraw).toEqual(false)
+  })
+
+  it("Should have Play again button", () => {
+    const button = wrapper.find('button')
+    expect(button.length).toEqual(1)
+    expect(wrapper.find('button').text()).toEqual(constants.PLAY_AGAIN)
   })
 })
