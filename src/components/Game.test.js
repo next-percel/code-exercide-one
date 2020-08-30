@@ -68,4 +68,22 @@ describe('Game component', () => {
     )
     expect(winner).toEqual(constants.PLAYER_O)
   })
+
+  it('should display winner if player able to draw 3 "X" in a second column', () => {
+    const winner = calculateWinner(
+      Array(9).fill(constants.PLAYER_X, 1, 2)
+              .fill(constants.PLAYER_X, 4, 5)
+              .fill(constants.PLAYER_X, 7, 8)
+    )
+    expect(winner).toEqual(constants.PLAYER_X)
+  })
+
+  it('should display winner if player able to draw 3 "O" in a second column', () => {
+    const winner = calculateWinner(
+      Array(9).fill(constants.PLAYER_O, 1, 2)
+              .fill(constants.PLAYER_O, 4, 5)
+              .fill(constants.PLAYER_O, 7, 8)
+    )
+    expect(winner).toEqual(constants.PLAYER_O)
+  })
 })
