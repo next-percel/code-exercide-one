@@ -3,7 +3,7 @@ import { shallow } from 'enzyme'
 import Board from './Board'
 import Game from './Game'
 import constants from '../constants'
-import { calculateWinner } from '../helpers'
+import { calculateWinner, calculateDraw } from '../helpers'
  
 describe('Game component', () => {
   const wrapper = shallow(<Game />)
@@ -139,5 +139,15 @@ describe('Game component', () => {
               .fill(constants.PLAYER_O, 6, 7)
     )
     expect(winner).toEqual(constants.PLAYER_O)
+  })
+
+  it('should display game as draw if all nine squares are filled and no winner', () => {
+    const gameDraw = calculateDraw(['X', 'O', 'X', 'X', 'O', 'O', 'O', 'X', 'X'])
+    expect(gameDraw).toEqual(true)
+  })
+
+  it('should not display game as draw otherwise', () => {
+    const gameDraw = calculateDraw([])
+    expect(gameDraw).toEqual(false)
   })
 })

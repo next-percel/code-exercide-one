@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Board from './Board'
 import constants from '../constants'
-import { calculateWinner } from '../helpers'
+import { calculateWinner, calculateDraw } from '../helpers'
 
 const style = {
   width: '200px',
@@ -24,6 +24,9 @@ const Game = () => {
   let status;
   if (winner) {
     status = 'Winner: ' + winner
+  }
+  else if (calculateDraw(board))  {
+    status = 'Game draw'
   }
   else {
     status = constants.PLAYER_NEXT + ' : ' + (nextMove ? constants.PLAYER_X : constants.PLAYER_O)

@@ -17,3 +17,11 @@ export const calculateWinner = board => {
   }
   return null;
 }
+
+export const calculateDraw = board => {
+  const restCount = board.filter(square => square !== null ).length
+  if (calculateWinner(board) === null && restCount === 9) {
+    return true;
+  }
+  return false;
+}
