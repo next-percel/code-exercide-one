@@ -3,7 +3,8 @@ import { shallow } from 'enzyme'
 import Board from './Board'
 import Game from './Game'
 import constants from '../constants'
-
+import { calculateWinner } from '../helpers'
+ 
 describe('Game component', () => {
   const wrapper = shallow(<Game />)
 
@@ -19,4 +20,15 @@ describe('Game component', () => {
   it('Should have 1 Board in the Game', () => {
     expect(wrapper.find(Board).length).toEqual(1)
   })
+
+  it('should display winner if player able to draw 3 "X" in a first row', () => {
+    const winner = calculateWinner(Array(9).fill(constants.PLAYER_X, 0, 3))
+    expect(winner).toEqual(constants.PLAYER_X)
+  })
+
+  it('should display winner if player able to draw 3 "O" in a first row', () => {
+    const winner = calculateWinner(Array(9).fill(constants.PLAYER_O, 0, 3))
+    expect(winner).toEqual(constants.PLAYER_O)
+  })
+
 })
